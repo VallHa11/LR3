@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог дверей</title>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Каталог дверей</h1>
+    </header>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/doors">Двери</a>
+        <a href="/contact">Контакты</a>
+        <a href="/profile">Профиль</a>
+        <a href="/cart">Корзина</a>
+    </nav>
+    <div class="container">
+        <h2>Наши двери</h2>
+        <ul>
+            {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.price }} руб.
+                <a href="{% url 'add_to_cart' product.id %}">Добавить в корзину</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 Сайт о дверях</p>
+    </footer>
+</body>
+</html>

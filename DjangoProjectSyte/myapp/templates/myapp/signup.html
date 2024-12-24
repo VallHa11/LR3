@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'myapp/Auth.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Регистрация</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Регистрация</button>
+        </form>
+        <p>Уже зарегистрированы? <a href="{% url 'login' %}">Войти</a></p>
+    </div>
+</body>
+</html>

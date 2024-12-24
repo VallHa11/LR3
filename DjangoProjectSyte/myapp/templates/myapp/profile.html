@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+<header>
+    <h1>Личный кабинет</h1>
+</header>
+<nav>
+    <a href="/">Главная</a>
+    <form method="post" action="{% url 'logout' %}" style="display:inline;">
+        {% csrf_token %}
+        <button type="submit" style="background:none;border:none;color:white;cursor:pointer;text-decoration:underline;">Выйти</button>
+    </form>
+</nav>
+<div class="container">
+    <h2>Профиль пользователя</h2>
+    <p>Имя: {{ user.first_name }}</p>
+    <p>Фамилия: {{ user.last_name }}</p>
+    <p>Логин: {{ user.username }}</p>
+</div>
+<footer>
+    <p>&copy; 2024 Ваш Сайт</p>
+</footer>
+</body>
+</html>
+

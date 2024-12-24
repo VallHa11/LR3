@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <header>
+        <h1>Корзина</h1>
+    </header>
+    <nav>
+        <a href="/">Главная</a>
+        <a href="/doors">Двери</a>
+        <a href="/contact">Контакты</a>
+        <a href="/profile">Профиль</a>
+        <a href="/cart">Корзина</a>
+    </nav>
+    <div class="container">
+    <h2>Корзина</h2>
+    <ul>
+        {% for item in cart_items %}
+        <li>
+            {{ item.product.name }} - {{ item.quantity }} x {{ item.product.price }} = {{ item.get_total_price }} руб.
+            
+            <form method="post" action="{% url 'remove_from_cart' item.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit">Удалить</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <h3>Итоговая сумма: {{ total_price }} руб.</h3>
+
+    <button id="checkout-button">Оплатить</button>
+
+    <script>
+        var stripe = Stripe('{{ stripe_public_key }}');
+
+        document.getElementById('checkout-button').addEventListener('click', function () {
+            fetch('/create-checkout-session/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({
+                    total_price: {{ total_price|floatformat:2|safe }}
+                })
+            })
+            .then(response => response.json())
+            .then(session => stripe.redirectToCheckout({ sessionId: session.id }))
+            .then(result => {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+    </div>
+</body>
+</html>

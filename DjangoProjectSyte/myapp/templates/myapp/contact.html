@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Связь</title>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+<header>
+    <h1>Свяжитесь с нами</h1>
+</header>
+<nav>
+    <a href="/">Главная</a>
+    <a href="/doors">Двери</a>
+    <a href="/contact">Контакты</a>
+    <a href="/profile">Профиль</a>
+    <a href="/cart">Корзина</a>
+</nav>
+<div class="container">
+    <h2>Контакты</h2>
+        <p>Спасибо за ваше сообщение, Мы свяжемся с вами в ближайшее время.</p>
+        <form id="contactForm">
+            <label for="name">Ваше имя:</label>
+            <input type="text" id="name" name="name" required><br>
+            <label for="message">Сообщение:</label>
+            <textarea id="message" name="message" required></textarea><br>
+            <button type="submit">Отправить</button>
+        </form>
+</div>
+<footer>
+    <p>&copy; 2024 Сайт о дверях</p>
+</footer>
+</body>
+</html>

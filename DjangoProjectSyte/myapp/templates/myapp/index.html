@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Основная страница</title>
+   <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Добро пожаловать на сайт о дверях</h1>
+    </header>
+    <nav>
+    <a href="/">Главная</a>
+    <a href="/doors">Двери</a>
+    <a href="/contact">Контакты</a>
+        <a href="/profile">Профиль</a>
+        <a href="/cart">Корзина</a>
+        
+</nav>
+    <div class="container">
+        <h2>О нашем сайте</h2>
+        <p>Этот сайт посвящён информации о дверях всех видов и типов.</p>
+    </div>
+    <footer>
+        <p>&copy; 2024 Сайт о дверях</p>
+    </footer>
+</body>
+</html>

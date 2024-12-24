@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали двери</title>
+    <link rel="stylesheet" href="{% static 'myapp/style.css' %}">
+</head>
+<body>
+<header>
+    <h1>Детали двери</h1>
+</header>
+<nav>
+    <a href="/">Главная</a>
+    <a href="/doors">Двери</a>
+    <a href="/contact">Контакты</a>
+    <a href="/cart">Корзина</a>
+</nav>
+<div class="container">
+    <h2>Информация о двери с ID: {{ door_id }}</h2>
+    <p>Здесь вы можете разместить дополнительные сведения о двери.</p>
+</div>
+<footer>
+    <p>&copy; 2024 Сайт о дверях</p>
+</footer>
+</body>
+</html>
