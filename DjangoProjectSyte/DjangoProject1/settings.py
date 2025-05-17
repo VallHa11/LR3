@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp',
+    'DjangoProjectSyte.myapp',
 ]
 
 MIDDLEWARE = [
@@ -50,11 +50,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'DjangoProject1.urls'
+ROOT_URLCONF = 'DjangoProjectSyte.DjangoProject1.urls'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 TEMPLATES = [
@@ -73,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoProject1.wsgi.application'
+WSGI_APPLICATION = 'DjangoProjectSyte.DjangoProject1.wsgi.application'
 
 
 # Database
@@ -131,3 +128,14 @@ LOGOUT_REDIRECT_URL = 'login'
 
 STRIPE_PUBLIC_KEY = 'pk_test_51QZVcqGjkQpkJhCAsRy3yDTzwUaxoTGCqaV0uSDn3iQ36f8mkv5MujVs6XHD6NB48hZZF3s8ECzqeTwzQt42Tv6b00RJsJMC5B'
 STRIPE_SECRET_KEY = 'sk_test_51QZVcqGjkQpkJhCABbkfOOjHLMGiSuhIqyu46UDbzReb6KyVAje9QYM4MkPBqeFlGKSCzqP80Hf487E1acVzTohF00fw2lCsFu'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django_db',
+        'USER': 'django_user',
+        'PASSWORD': 'django_pass',
+        'HOST': 'db',
+        'PORT': '5432',
+    }
+}
